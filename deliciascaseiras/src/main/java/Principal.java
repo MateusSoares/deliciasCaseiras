@@ -50,7 +50,7 @@ public class Principal {
 		
 		
 		
-		pedService.salvar(ped);
+		//pedService.salvar(ped);
 		
 		
 	}
