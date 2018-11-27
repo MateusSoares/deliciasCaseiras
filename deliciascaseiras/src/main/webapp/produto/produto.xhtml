@@ -1,0 +1,82 @@
+   <ui:composition template="/WEB-INF/templates/Layout.xhtml" 
+   xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://xmlns.jcp.org/jsf/html"
+   xmlns:f="http://xmlns.jcp.org/jsf/core"
+   xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+   xmlns:p="http://primefaces.org/ui">
+ 
+    <ui:define name="conteudo">
+    
+    <h1 class="if-page-title">Pesquisa de Produto</h1>
+       <h:form  id="frm">
+          <p:toolbar>
+             <p:toolbarGroup  align="left">
+               <p:commandButton value="Novo"
+                                icon="ui-icon-plus"
+                                action="#{produtoBean.novoProduto}"/>
+             </p:toolbarGroup>             
+          </p:toolbar>          
+          
+          <p:messages/>
+          <p:dataTable value="#{produtoBean.produtos}"
+                       var="produto" 
+                       selectionMode="single"
+                       selection="#{produtoBean.prodEdicao}"
+                       rowKey="#{produto.codigo}"
+                       reflow="true"
+                       style="margin-top: 20px"
+                       paginator="true"
+                       sortBy="#{produto.codigo}"
+                       id="tbproduto"
+                       emptyMessage="Não existe registros cadastrados"
+                       >
+                       
+             <p:column headerText="Código"  width="20%">
+                  <h:outputText value="#{produto.codigo}"  />
+             </p:column>
+              
+             <p:column headerText="Nome" width="70%">
+                  <h:outputText value="#{produto.nome}"  />
+             </p:column>
+              
+             <p:column headerText="Descrição" width="70%">
+                  <h:outputText value="#{produto.descricao}"  />
+             </p:column>
+          
+             <p:column headerText=" " width="10%">
+                  <p:commandButton icon="ui-icon-trash"
+                                   title="Excluir"
+                                   update="frm"
+                                   oncomplete="PF('confirmacao').show(); return false;">
+                      <f:setPropertyActionListener
+                          target="#{produtoBean.prodEdicao}" value="#{produto}" />
+                                   
+                  </p:commandButton>                 
+                                   
+             </p:column>
+             
+             
+             <f:facet name="footer">
+                <p:commandButton icon="ui-icon-pencil"
+                                 value="Editar"
+                                 action="#{produtoBean.editarProduto}" />
+             </f:facet>
+          </p:dataTable>
+
+			<p:confirmDialog header="Exclusão de item"
+				message="Tem certeza que deseja excluir esse registro?"
+widgetVar="confirmacao">
+				<p:commandButton value="Sim" action="#{produtoBean.excluirProduto}"
+					update="frm" process="@this"
+					oncomplete="PF('confirmacao').hide()" />
+				<p:button value="Não"
+					onclick="PF('confirmacao').hide(); return false;" />
+			</p:confirmDialog>
+
+
+		</h:form>
+    </ui:define>
+ 
+   
+   
+   </ui:composition>

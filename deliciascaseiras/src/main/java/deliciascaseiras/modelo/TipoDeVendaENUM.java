@@ -2,15 +2,15 @@ package deliciascaseiras.modelo;
 
 public enum TipoDeVendaENUM {
 
-	UNIDADE(1), KG(2);
+	UNIDADE("Unidade"), KG("KG");
 	 
-	private Integer valor ;
+	private String valor ;
 
-	private TipoDeVendaENUM(Integer valor) {
+	private TipoDeVendaENUM(String valor) {
 		this.valor = valor;
 	}
 	
-	public Integer getValor() {
+	public String getValor() {
 		return this.valor ;
 	}
 	

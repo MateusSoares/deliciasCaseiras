@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<f:facet name="first">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<title>Delicias Caseiras</title>
+	
+	<h:outputStylesheet library="ifmg" name="css/layout.css" />
+	
+	<h:outputScript target="body" library="primefaces" name="jquery/jquery.js" />
+    <h:outputScript target="body" library="ifmg" name="js/app.js" />
+
+<script>
+PrimeFaces.locales['pt'] = {
+closeText: 'Fechar',
+prevText: 'Anterior',
+nextText: 'Próximo',
+currentText: 'Começo',
+monthNames:
+['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
+dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+dayNamesMin: ['D','S','T','Q','Q','S','S'],
+weekHeader: 'Semana',
+firstDay: 0,
+isRTL: false,
+showMonthAfterYear: false,
+yearSuffix: '',
+timeOnlyTitle: 'Só Horas',
+timeText: 'Tempo',
+hourText: 'Hora',
+minuteText: 'Minuto',
+secondText: 'Segundo',
+ampm: false,
+month: 'Mês',
+week: 'Semana',
+day: 'Dia',
+allDayText : 'Todo o Dia'
+};
+</script>                      
+
+
+</h:head>
+
+<h:body>
+
+	<header class="if-topbar">
+		<h:graphicImage library="ifmg" name="images/delicias.png" 
+		    width="200" height="100"/>
+			    
+		<div style="float: right">
+			<div style="float: left; line-height: 50px; margin-right: 80px">
+			   Olá #{seguranca.nomeUsuario}!
+			</div>
+
+			<div style="float: right">
+				<a href="#" class="if-toggle  js-toggle"><i class="fa  fa-bars"></i></a>
+			</div>
+		</div>
+
+	</header>
+	
+	<aside class="if-sidebar  js-sidebar">
+		<nav class="if-menu">
+			<ul>
+				<li><h:link outcome="/pessoa/pessoa">
+            <i class="fa  fa-fw  fa-file-text"></i>Pedidos</h:link></li>
+				<li><h:link outcome="/pessoa/CadastroPessoa">
+            <i class="fa  fa-fw  fa-user"></i>Meus Dados</h:link></li>
+                <!-- 
+                <li> 
+                     <h:link value="#{seguranca.logout}">
+                        <i class="fa fa-fw fa-adn"></i>Sair
+                     </h:link>
+                </li>
+                <li>#{seguranca.logout}</li> -->
+                <li>
+                    <a href="#{seguranca.logout}">
+                    <i class="fa fa-fw fa-adn"></i>Sair
+                    </a>                    
+                </li>
+			</ul>
+		</nav>
+	</aside>
+    
+    <section class="if-content  js-content">
+		<ui:insert name="conteudo" />
+    </section>
+    
+</h:body>
+</html>

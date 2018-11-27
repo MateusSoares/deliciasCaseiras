@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity @Table(name="cliente")
@@ -19,9 +20,8 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer codigo ;
-	private String nome ;
-	private String login ;
-	private String senha ;
+	@OneToOne
+	private Pessoa pessoa ;
 	@OneToMany(mappedBy="cliente")
 	private List<Pedido> pedidos = new ArrayList<Pedido>() ;
 	
@@ -30,10 +30,8 @@ public class Cliente implements Serializable {
 	}
 
 
-	public Cliente(String nome, String login, String senha) {
-		this.nome = nome;
-		this.login = login;
-		this.senha = senha;
+	public Cliente(Integer codigo) {
+		this.codigo = codigo ;
 	}
 
 
@@ -47,27 +45,27 @@ public class Cliente implements Serializable {
 	}
 
 	public String getNome() {
-		return nome;
+		return pessoa.getNome();
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		pessoa.setNome(nome);;
 	}
 
 	public String getLogin() {
-		return login;
+		return pessoa.getLogin();
 	}
 
 	public void setLogin(String login) {
-		this.login = login;
+		pessoa.setLogin(login);
 	}
 
 	public String getSenha() {
-		return senha;
+		return pessoa.getSenha();
 	}
 
 	public void setSenha(String senha) {
-		this.senha = senha;
+		pessoa.setSenha(senha);
 	}
 
 	public List<Pedido> getPedidos() {
@@ -112,7 +110,7 @@ public class Cliente implements Serializable {
 
 	@Override
 	public String toString() {
-		return this.nome;
+		return this.pessoa.getNome();
 	}
 	
 	
