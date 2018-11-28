@@ -11,8 +11,19 @@
     
     <http pattern="/login.xhtml" security="none" />
     <http pattern="/erro.xhtml" security="none" />
+    <http pattern="/acessorio.xhtml" security="none" />
     <http pattern="/javax.faces.resource/**" security="none" />
     
+    <http auto-config="false" use-expressions="true">
+    <intercept-url pattern="/pessoa/**" access="isAuthenticated()" />
+    <intercept-url pattern="/produto/**" access="hasAnyRole('ADMINISTRADOR')" />
+    <intercept-url pattern="/**" access="denyAll" />
+  
+        <form-login login-page="/login.xhtml" authentication-failure-url="/login.xhtml?invalid=true" 
+      default-target-url="/index.xhtml" always-use-default-target="true" />
+        <logout logout-url="/j_spring_security_logout" invalidate-session="true" /> 
+  
+  </http>
 	
 	
     <authentication-manager>
