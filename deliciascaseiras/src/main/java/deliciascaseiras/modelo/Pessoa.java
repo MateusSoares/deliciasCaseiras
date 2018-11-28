@@ -1,8 +1,10 @@
 package deliciascaseiras.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -18,6 +20,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
@@ -66,6 +69,9 @@ public class Pessoa implements Serializable{
 	}, joinColumns = @JoinColumn(name="codPessoa"))
 	@Column(name="permissao", length=50)
 	private Set<String> permissao = new HashSet<String>();
+ 	
+ 	@OneToMany(mappedBy="pessoa")
+	private List<Pedido> pedidos = new ArrayList<Pedido>() ;
  	 
 
  	
@@ -186,6 +192,14 @@ public class Pessoa implements Serializable{
 
 	public void setPermissao(Set<String> permissao) {
 		this.permissao = permissao;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	@Override

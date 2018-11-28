@@ -1,14 +1,11 @@
 package deliciascaseiras.modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,8 +19,7 @@ public class Cliente implements Serializable {
 	private Integer codigo ;
 	@OneToOne
 	private Pessoa pessoa ;
-	@OneToMany(mappedBy="cliente")
-	private List<Pedido> pedidos = new ArrayList<Pedido>() ;
+	
 	
 	public Cliente() {
 		
@@ -67,16 +63,6 @@ public class Cliente implements Serializable {
 	public void setSenha(String senha) {
 		pessoa.setSenha(senha);
 	}
-
-	public List<Pedido> getPedidos() {
-		return pedidos;
-	}
-
-
-	public void setPedidos(List<Pedido> pedidos) {
-		this.pedidos = pedidos;
-	}
-
 
 	@Override
 	public int hashCode() {

@@ -35,7 +35,7 @@ public class Pedido implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private StatusPedidoENUM status ;
 	@ManyToOne
-	private Cliente cliente ;
+	private Pessoa pessoa ;
 	
 	
 	
@@ -47,12 +47,12 @@ public class Pedido implements Serializable {
 
 
 
-	public Pedido(List<Produto> produtos, Date dtPedido, Date dtEntrega, StatusPedidoENUM status, Cliente cliente) {
+	public Pedido(List<Produto> produtos, Date dtPedido, Date dtEntrega, StatusPedidoENUM status, Pessoa pessoa) {
 		this.produtos = produtos;
 		this.dtPedido = dtPedido;
 		this.dtEntrega = dtEntrega;
 		this.status = status;
-		this.cliente = cliente;
+		this.pessoa = pessoa;
 	}
 
 
@@ -128,15 +128,15 @@ public class Pedido implements Serializable {
 
 
 
-	public Cliente getCliente() {
-		return cliente;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
 
 
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 
