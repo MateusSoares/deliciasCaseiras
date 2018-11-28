@@ -44,6 +44,13 @@ xmlns:p="http://primefaces.org/ui">
                     <f:validateLength minimum="3" maximum="50"/>
                  </p:inputText>
                  
+                  <p:outputLabel value="Valor" for="vlrVenda" />
+                 <p:inputNumber value="#{produtoBean.prodEdicao.valor}" 
+                              id="vlrVenda" 
+                              required="true"  >
+                    
+                 </p:inputNumber>
+                 
                  <p:outputLabel value="TipoDeVenda" for="cbVenda" />
                  <p:selectOneMenu id="cbVenda"
                                   value="#{produtoBean.prodEdicao.tipoVenda}">

@@ -13,7 +13,7 @@ public class PedidoService {
 
 	public void salvar(Pedido obj) {
 
-		if ((obj == null) || (obj.getCliente().getNome().isEmpty()))
+		if ((obj == null) || (obj.getPessoa().getNome().isEmpty()))
 			throw new ServiceException("Nome do Cliente não informado!");
 
 		dao.salvar(obj);

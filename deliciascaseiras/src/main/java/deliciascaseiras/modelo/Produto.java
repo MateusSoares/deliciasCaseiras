@@ -20,6 +20,7 @@ public class Produto implements Serializable {
 	private Integer codigo ;
 	private String nome ;
 	private String descricao ;
+	private Double valor ;
 	@Enumerated(EnumType.STRING)
 	private TipoDeVendaENUM tipoVenda ;
 	
@@ -63,6 +64,14 @@ public class Produto implements Serializable {
 
 	public void setTipoVenda(TipoDeVendaENUM tipoVenda) {
 		this.tipoVenda = tipoVenda;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
 	@Override
