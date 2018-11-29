@@ -72,17 +72,18 @@ allDayText : 'Todo o Dia'
 	<aside class="if-sidebar  js-sidebar">
 		<nav class="if-menu">
 			<ul>
-				<li><h:link outcome="/pessoa/pessoa">
-            <i class="fa  fa-fw  fa-file-text"></i>Pedidos</h:link></li>
-				<li><h:link outcome="/pessoa/pessoa">
+			  <li><h:link>
+            <i class="fa  fa-fw  fa-home"></i>Dashboard</h:link></li>
+        <li><h:link outcome="/produtoU/produtoU">
+            <i class="fa fa-fw  fa-cutlery"></i>Ver Produtos</h:link></li>
+				<li><h:link outcome="/pedidoU/CadastroPedidoU">
+            <i class="fa fa-fw  fa-plus-square"></i>Fazer Pedidos</h:link></li>
+        <li><h:link outcome="/pedidoU/pedidoU">
+            <i class="fa fa-fw   fa-list"></i>Pedidos</h:link></li> 
+				<li><h:link outcome="/pessoaU/CadastroPessoaU">
             <i class="fa  fa-fw  fa-user"></i>Meus Dados</h:link></li>
-                <!-- 
-                <li> 
-                     <h:link value="#{seguranca.logout}">
-                        <i class="fa fa-fw fa-adn"></i>Sair
-                     </h:link>
-                </li>
-                <li>#{seguranca.logout}</li> -->
+        <li><h:link outcome="/indexA">
+            <i class="fa fa-fw fa-cogs"></i>Painel Administrador</h:link></li>
                 <li>
                     <a href="#{seguranca.logout}">
                     <i class="fa fa-fw fa-adn"></i>Sair

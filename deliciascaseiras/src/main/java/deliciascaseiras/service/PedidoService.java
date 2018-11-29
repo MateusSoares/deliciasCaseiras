@@ -6,6 +6,7 @@ import org.hibernate.service.spi.ServiceException;
 
 import deliciascaseiras.dao.PedidoDAO;
 import deliciascaseiras.modelo.Pedido;
+import deliciascaseiras.modelo.Pessoa;
 
 public class PedidoService {
 
@@ -22,6 +23,12 @@ public class PedidoService {
 	public List<Pedido> buscarTodos() {
 
 		return dao.buscarTodos();
+
+	}
+	
+	public List<Pedido> buscarPorPessoa(Pessoa pessoa) {
+
+		return dao.buscarPorPessoa(pessoa);
 
 	}
 

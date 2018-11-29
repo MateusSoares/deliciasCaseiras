@@ -1,19 +1,14 @@
 package deliciascaseiras.modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,32 +21,30 @@ public class Pedido implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer codigo ;
-	@OneToMany
-	private List<Produto> produtos = new ArrayList<Produto>();
+	@ManyToOne
+	private Produto produto ;
 	@Temporal(TemporalType.DATE)
-	private Date dtPedido ;
+	private Date dtPedido = new Date() ;
 	@Temporal(TemporalType.DATE)
 	private Date dtEntrega ;
-	@Enumerated(EnumType.STRING)
-	private StatusPedidoENUM status ;
 	@ManyToOne
 	private Pessoa pessoa ;
+	private Boolean confirmado ; 
 	
 	
 	
 
 	public Pedido() {
-		
+		this.confirmado = false ;
 	}
 
 
 
 
-	public Pedido(List<Produto> produtos, Date dtPedido, Date dtEntrega, StatusPedidoENUM status, Pessoa pessoa) {
-		this.produtos = produtos;
+	public Pedido(Produto poduto, Date dtPedido, Date dtEntrega, Pessoa pessoa) {
+		this.produto = poduto;
 		this.dtPedido = dtPedido;
 		this.dtEntrega = dtEntrega;
-		this.status = status;
 		this.pessoa = pessoa;
 	}
 
@@ -72,15 +65,15 @@ public class Pedido implements Serializable {
 
 
 
-	public List<Produto> getProdutos() {
-		return produtos;
+	public Produto getProduto() {
+		return produto;
 	}
 
 
 
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
 
@@ -113,21 +106,6 @@ public class Pedido implements Serializable {
 
 
 
-
-	public StatusPedidoENUM getStatus() {
-		return status;
-	}
-
-
-
-
-	public void setStatus(StatusPedidoENUM status) {
-		this.status = status;
-	}
-
-
-
-
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -137,6 +115,14 @@ public class Pedido implements Serializable {
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
+	}
+	
+	public boolean isConfirmado() {
+		return confirmado;
+	}
+
+	public void setConfirmado(boolean confirmado) {
+		this.confirmado = confirmado;
 	}
 
 

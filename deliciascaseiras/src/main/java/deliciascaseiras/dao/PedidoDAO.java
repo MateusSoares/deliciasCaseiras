@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import deliciascaseiras.modelo.Pedido;
+import deliciascaseiras.modelo.Pessoa;
 import deliciascaseiras.util.Conexao;
 
 public class PedidoDAO {
@@ -28,6 +29,14 @@ public void salvar(Pedido obj){
 		
 		return em
 		        .createQuery("from Pedido")
+		        .getResultList();
+		
+	}	
+	
+	public List<Pedido> buscarPorPessoa(Pessoa pessoa){
+		
+		return em
+		        .createQuery("from Pedido where pessoa_codigo = " + pessoa.getCodigo().toString())
 		        .getResultList();
 		
 	}	

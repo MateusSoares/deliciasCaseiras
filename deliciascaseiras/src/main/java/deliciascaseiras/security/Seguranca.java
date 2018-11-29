@@ -23,6 +23,18 @@ public class Seguranca {
 		
 		return nome;
 	}
+	
+	public Integer getCodUsuario() {
+		Integer cod = null;
+		
+		PessoaSistema usuarioLogado = getUsuarioLogado();
+		
+		if (usuarioLogado != null) {
+			cod = usuarioLogado.getUsuario().getCodigo();
+		}
+		
+		return cod;
+	}
 
 	private PessoaSistema getUsuarioLogado() {
 		PessoaSistema usuario = null;

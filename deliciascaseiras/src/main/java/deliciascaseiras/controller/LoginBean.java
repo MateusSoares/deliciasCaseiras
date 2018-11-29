@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import deliciascaseiras.modelo.Pessoa;
 import deliciascaseiras.util.FacesMensagens;
 
 
@@ -55,4 +56,9 @@ public class LoginBean implements Serializable{
 	public void setLogin(String login) {
 		this.login = login;
 	}
+	
+	public String novaPessoa(){
+		return  "CadastroPessoaU?faces-redirect=true";
+	}
+	
 }

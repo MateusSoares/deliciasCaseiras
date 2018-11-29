@@ -11,12 +11,18 @@
     
     <http pattern="/login.xhtml" security="none" />
     <http pattern="/erro.xhtml" security="none" />
-    <http pattern="/acessorio.xhtml" security="none" />
+    <http pattern="/CadastroPessoaN.xhtml" security="none" />
     <http pattern="/javax.faces.resource/**" security="none" />
     
     <http auto-config="false" use-expressions="true">
-    <intercept-url pattern="/pessoa/**" access="isAuthenticated()" />
+    <intercept-url pattern="/index.xhtml" access="isAuthenticated()" />
+    <intercept-url pattern="/pedidoU/**" access="isAuthenticated()" />
+    <intercept-url pattern="/produtoU/**" access="isAuthenticated()" />
+    <intercept-url pattern="/pessoaU/**" access="isAuthenticated()" />
+    <intercept-url pattern="/pessoa/**" access="hasAnyRole('ADMINISTRADOR')" />
     <intercept-url pattern="/produto/**" access="hasAnyRole('ADMINISTRADOR')" />
+    <intercept-url pattern="/pedido/**" access="hasAnyRole('ADMINISTRADOR')" />
+    <intercept-url pattern="/indexA.xhtml" access="hasAnyRole('ADMINISTRADOR')" />
     <intercept-url pattern="/**" access="denyAll" />
   
         <form-login login-page="/login.xhtml" authentication-failure-url="/login.xhtml?invalid=true" 
